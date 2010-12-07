@@ -58,6 +58,6 @@
 
 .. [Garfinkel1967] Garfinkel, H.,1967, "Studies in Ethnomethodology", Prentice-Hall, p.11
 
-rublic:: 註
+.. rubric:: 註
 .. [#] 別の手法として、概念分析などがあるがここでは触れない。
 
