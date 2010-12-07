@@ -54,4 +54,4 @@
 8 Conclusion
 ============
 
-[Garfinkel1967] Garfinkel, H.,1967, "Studies in Ethnomethodology", Prentice-Hall, p.11
+.. [Garfinkel1967] Garfinkel, H.,1967, "Studies in Ethnomethodology", Prentice-Hall, p.11
