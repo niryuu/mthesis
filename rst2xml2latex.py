@@ -1,19 +1,37 @@
-# -*- coding: utf-8 -*-
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from xml.dom.minidom import parse
 import sys
 
+def parse_paragraph(e):
+	print e.firstChild.data + "\n"
+
+def parse_bullet_list(e):
+	print u"\\begin{itemize}"
+	for item in e.childNodes:
+		print u"\\item " + item.firstChild.firstChild.data
+	print u"\\end{itemize}"
+
+def parse_in_section(e):
+	for element in e.childNodes:
+		if element.tagName == "paragraph":
+			parse_paragraph(element)
+		elif element.tagName == "bullet_list":
+			parse_bullet_list(element)
+
 def parse_section(dom):
-	dom = parse(sys.argv[1])
 	elements = dom.getElementsByTagName("section")
 	for element in elements:
 		if element.parentNode.nodeName == "section":
 			if element.parentNode.parentNode.nodeName == "section":
-				print "subsubsection ",
+				s = u"\\subsection{"
 			else:
-				print "subsection ",
+				s = u"\\section{"
 		else:
-			print "section ",
-		print element.getAttributeNode("names").nodeValue
+			s = u"\\chapter{"
+		s += element.firstChild.firstChild.data + u"}"
+		print s
+		parse_in_section(element)
 
 dom = parse(sys.argv[1])
+parse_section(dom)
