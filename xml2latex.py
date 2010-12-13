@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python -S
 # -*- coding: utf-8 -*-
 from xml.dom.minidom import parse
 import sys
@@ -33,5 +33,6 @@ def parse_section(dom):
 		print s
 		parse_in_section(element)
 
+sys.setdefaultencoding('UTF-8')
 dom = parse(sys.argv[1])
 parse_section(dom)
