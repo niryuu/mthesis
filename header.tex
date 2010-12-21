@@ -1,0 +1,90 @@
+\documentclass[a4j,11pt,report]{jsbook}
+
+%% package
+\usepackage{plext, layout, geometry}
+\usepackage[dvipdfm]{graphicx}
+%%\usepackage{picins}
+
+%% layout
+\geometry{top=25mm, left=30mm,right=20mm, bottom=20mm}
+
+%% 以下2行が章のラベルを書き換える^M
+%%\renewcommand{\presectionname}{第}^M
+%%\renewcommand{\postsectionname}{章}
+
+%% command definition - begin
+\setcounter{tocdepth}{2}
+
+\makeatletter
+\long\def\@makecaption#1#2{%
+\vskip\abovecaptionskip
+\iftdir\sbox\@tempboxa{#1\hskip1zw#2}%
+%% \else\sbox\@tempboxa{#1: #2}%
+\else\sbox\@tempboxa{#1: #2}%ここで変更
+\fi
+\ifdim \wd\@tempboxa >\hsize
+\iftdir #1\hskip1zw#2\relax\par
+\else #1: #2\relax\par\fi
+\else
+\global \@minipagefalse
+\hbox to\hsize{\hfil\box\@tempboxa\hfil}%
+\fi
+\vskip\belowcaptionskip}
+\makeatother
+
+\makeatletter
+\def\@makechapterhead#1{%
+  \vspace*{2\Cvs}% 欧文は50pt
+  {\parindent \z@ \raggedright \normalfont
+    \huge\headfont
+    \ifnum \c@secnumdepth >\m@ne
+      \if@mainmatter
+        \@chapapp\thechapter\@chappos
+        \hskip1zw
+      \fi
+    \fi
+    #1\par\nobreak
+    \vskip 3\Cvs}}
+\makeatother
+
+\renewcommand{\emph}[1]%
+{\bou{#1}}
+
+\newcommand{\result}%
+{\begin{math}\rightarrow\end{math}}
+
+\newcommand{\note}[1]{{\footnotesize
+#1}}
+
+\newcommand{\sic}%
+{{\tiny ママ}}
+
+\newenvironment{thesis}{%
+    \par \parindent=0pt \em%
+    \vspace{5mm}\hspace{5mm}%
+    \begin{minipage}[t]{160mm}
+}{%
+    \end{minipage}%
+    \vspace{5mm}%
+    \par%
+}
+\newenvironment{terms}{%
+    \par \parindent=0pt%
+    \vspace{5mm}\hspace{5mm}%
+    \begin{minipage}[t]{160mm}
+}{%
+    \end{minipage}%
+    \vspace{5mm}%
+    \par%
+}
+
+%% command definition - end
+
+\begin{document}
+\setcounter{page}{2}
+%\begin{titlepage}
+\tableofcontents
+\listoffigures
+
+%\end{titlepage}
+\newpage

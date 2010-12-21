@@ -4,7 +4,14 @@ from xml.dom.minidom import parse
 import sys
 
 def parse_paragraph(e):
-	print e.firstChild.data + "\n"
+	for element in e.childNodes:
+		if element.nodeName == "citation_reference":
+			print "[%s]"%(element.getAttribute('refid'))
+		elif element.nodeName == "footnote_reference":
+			print "\footnote{%s}"%(element.getAttribute("ids"))
+		elif element.nodeName == "#text":
+			print element.data
+	print "\n"
 
 def parse_bullet_list(e):
 	print u"\\begin{itemize}"
@@ -14,9 +21,9 @@ def parse_bullet_list(e):
 
 def parse_in_section(e):
 	for element in e.childNodes:
-		if element.tagName == "paragraph":
+		if element.nodeName == "paragraph":
 			parse_paragraph(element)
-		elif element.tagName == "bullet_list":
+		elif element.nodeName == "bullet_list":
 			parse_bullet_list(element)
 
 def parse_section(dom):
@@ -35,4 +42,10 @@ def parse_section(dom):
 
 sys.setdefaultencoding('UTF-8')
 dom = parse(sys.argv[1])
+f = file("header.tex", "r")
+print f.read()
+f.close()
 parse_section(dom)
+f = file("footer.tex", "r")
+print f.read()
+f.close()
