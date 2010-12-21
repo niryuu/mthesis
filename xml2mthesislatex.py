@@ -8,7 +8,7 @@ def parse_paragraph(e):
 		if element.nodeName == "citation_reference":
 			print "[%s]"%(element.getAttribute('refid'))
 		elif element.nodeName == "footnote_reference":
-			print "\footnote{%s}"%(element.getAttribute("ids"))
+			print "\\footnote{%s}"%(element.getAttribute("ids"))
 		elif element.nodeName == "#text":
 			print element.data
 	print "\n"
@@ -19,12 +19,24 @@ def parse_bullet_list(e):
 		print u"\\item " + item.firstChild.firstChild.data
 	print u"\\end{itemize}"
 
+def parse_figure(e):
+	if e.firstChild.nodeName == 'image':
+		print """
+\\begin{figure}[!ht]
+\\centering 
+\\includegraphics[scale=.%s]{%s}
+\\caption{%s}
+\\end{figure}
+"""%(e.firstChild.getAttribute('scale'), e.firstChild.getAttribute("uri"), e.childNodes[1].firstChild.data)
+
 def parse_in_section(e):
 	for element in e.childNodes:
 		if element.nodeName == "paragraph":
 			parse_paragraph(element)
 		elif element.nodeName == "bullet_list":
 			parse_bullet_list(element)
+		elif element.nodeName == "figure":
+			parse_figure(element)
 
 def parse_section(dom):
 	elements = dom.getElementsByTagName("section")
