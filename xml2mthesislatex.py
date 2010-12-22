@@ -6,17 +6,18 @@ import sys
 def parse_paragraph(e):
 	for element in e.childNodes:
 		if element.nodeName == "citation_reference":
-			print "[%s]"%(element.getAttribute('refid'))
+			print "[%s]"%(element.getAttribute('refid')),
 		elif element.nodeName == "footnote_reference":
-			print "\\footnote{%s}"%(element.getAttribute("ids"))
+			print "\\footnote{%s}"%(element.getAttribute("ids")),
 		elif element.nodeName == "#text":
-			print element.data
+			print element.data,
 	print "\n"
 
 def parse_bullet_list(e):
 	print u"\\begin{itemize}"
 	for item in e.childNodes:
-		print u"\\item " + item.firstChild.firstChild.data
+		print u"\\item ",
+		parse_paragraph(item.firstChild)
 	print u"\\end{itemize}"
 
 def parse_figure(e):
