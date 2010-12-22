@@ -28,8 +28,6 @@
 * 現在普及し始めた実装(OpenCV, ARToolKit, OpenNI)
 * 設計論にどのような変化をもたらしたか
 
-modified(全てをぶち壊すことにしました)
-
 まず、本論で扱う技術は記号操作の枠に止まらず、実際に手で触ることができる空間に関わり、またそのように操作できるという特徴がある。前者に関しては、空間的広がりや、方向などを含んだものをコンピュータで扱えることを可能にするセンシング技術の進歩が関わっている。後者に関しては、ユーザーの物理的な操作を画像処理や加速度の認識によってインタフェースにできる技術が関わっている。基本的に、いわゆる拡張現実感技術も、単なる3Dの提示だけではなく、実際に手で操作できるという特性を持つ。本節では、このような特性を持つ技術コンセプトのうち、「複合現実感」「タンジブルインタフェース」の2つについてまとめる。
 
 実世界以前(GUI)
@@ -76,7 +74,13 @@ iPhoneでは触るという操作は、あくまで画面上のメタファー�
 
 タンジブルインタフェース
 ~~~~~~~~~~~~~~~~~~~~~~~~
+MIT Media Lab. の石井が提唱した「タンジブルユーザーインタフェース」(TUI)も、GUIの代わりとして実世界を志向したインタフェースの一つである。TUIは、人の物理的環境を感知して操作する能力を活用するため、デジタル情報を物理的空間で物理的に身体化された形で扱うものである( [Ishii2008]_, p.470)。GUIはディスプレイ上のピクセルとして情報を表すが、それとのインタラクションは我々が生活する物理的環境と不整合であり、物理的な物体を扱う能力を十分に発揮できない。TUIはデジタル情報に物理的な形を与えることを基礎とし、デジタル情報を手で「直接操作」することを可能にする。しかし、TUIは特定の目的のために特定の物理的形状を与えるもので、GUIのようにあらゆる目的にかなうものではない。
 
+TUIの基本的なモデルには、GUIと共通する部分と異なる部分がある。TUIは、GUIと同じようにMVC(Model-View-Controller)という設計モデルを採用している。これは、データの取扱いを決める「モデル」、情報の提示を管理する「ビュー」、プログラム全体の制御をする「コントローラー」の3つにプログラムの部品を分ける手法で、近年のWebアプリケーションなどにも採用されている。TUIでは、コントローラーはタンジブルなものを扱うものと、そうでないものに分かれる。また、モデルは「デジタル情報」として一般化される。
+
+TUIはGUIと同じく、デジタル情報の直接操作を行うが、タンジブルな表象を提示する。タンジブルな表象は物理的世界との架け橋となるとともに、デジタル情報と計算モデルの制御を可能にするように計算論的に結合されている。つまり、手などによる物理的な操作による位置などのパラメータが、制御に利用されている。一方で、TUIには物理的な制約があるため、映像投影や音声などの「インタンジブルな」インタフェースも補完的に使われる。
+
+TUIの基本的な特徴には以下のようなものがある。
 
 Augmented Reality/Mixed Reality
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -591,12 +595,12 @@ Experiment: Augmented Panorama Viewer
 
 .. [Garfinkel1967] Garfinkel, H.,1967, "Studies in Ethnomethodology", Prentice-Hall
 .. [Randall2007] Randall, D., et al., 2007, "Fieldwork for Design", Springer
-.. [Button2009] Button, G., Sharrock, W., 2009, "Studies of Work and the Workplace in HCI", Morgan & Claypool
+.. [Button2009] Button, G., Sharrock, W., 2009, "Studies of Work and the Workplace in HCI", Morgan amd Claypool
 .. [Schegloff2007] Schegloff, E., A., 2007, "Sequence Organization in Interaction: A Primer in Conversation Analysis I", Cambridge University Press
 .. [Suchman2007] Suchman, L., 2006, "Human-Machine Configuration: Plan and Situated Action 2nd Edition", Cambridge University Press
 .. [Siio2010] 椎尾一郎, 「ヒューマンコンピュータインタラクション入門」, サイエンス社, 2010
 .. [Rekimoto1996] 暦本純一, 「実世界志向インタフェースの研究動向」, コンピュータソフトウェア, Vol.13, No.3, pp.4–18
-
+.. [Ishii2008] Ishii, H., 2008, "Tangible User Interfaces", in "The Human-Computer Interaction Handbook Second Edition", Laurence Eribaum Associates, pp.470-487
 
 .. rubric:: 註
 .. [#] 別の手法として、概念分析などがあるがここでは触れない。

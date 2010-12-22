@@ -52,12 +52,19 @@ def parse_section(dom):
 		print s
 		parse_in_section(element)
 
+def parse_citation(dom):
+	print "\\begin{thebibliography}{99}"
+	elements = dom.getElementsByTagName("citation")
+	for e in elements:
+		print "\\bibitem{%s} %s"%(e.childNodes[0].firstChild.data,e.childNodes[1].firstChild.data)
+	print "\\end{thebibliography}"
 sys.setdefaultencoding('UTF-8')
 dom = parse(sys.argv[1])
 f = file("header.tex", "r")
 print f.read()
 f.close()
 parse_section(dom)
+parse_citation(dom)
 f = file("footer.tex", "r")
 print f.read()
 f.close()
