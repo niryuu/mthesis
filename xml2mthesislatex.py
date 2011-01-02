@@ -44,11 +44,11 @@ def parse_section(dom):
 	for element in elements:
 		if element.parentNode.nodeName == "section":
 			if element.parentNode.parentNode.nodeName == "section":
-				s = u"\\subsubsection{"
-			else:
 				s = u"\\subsection{"
+			else:
+				s = u"\\section{"
 		else:
-			s = u"\\section{"
+			s = u"\\chapter{"
 		s += element.firstChild.firstChild.data + u"}"
 		print s
 		parse_in_section(element)
