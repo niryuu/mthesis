@@ -48,15 +48,16 @@ GUIによるコンピュータの操作を可能にする概念は、椎尾に�
 
 iPhoneでは触るという操作は、あくまで画面上のメタファーに対して行われる。これは明らかにGUIの延長線上にある製品である。
 
-
 CSCW
 ----
 一方で、実世界を重視するという流れには、CSCW(コンピュータ支援共同作業)分野の一連の研究が深く関わっている。CSCWは、一言で言えば、実際のオフィスワークを念頭において、それをコンピュータによって支援する研究を総称する。その中には、例えばスケジュール管理に代表される「グループウェア」も当然重要な位置を占めるが、実際のオフィスについての分析を行う、もしくは実際のオフィスに適合するようなインタフェースの研究は、前節の実世界志向インタフェースにも接続されている。
 
 机の拡張
-~~~~~~~~
+--------
 机上の共同作業を支援する試み、特に紙の文書とデジタル文書をシームレスに扱うようなモデルは、複数の研究者によって提唱されており、後の実世界を志向したインタフェースや、映像を用いたコミュニケーションへの礎となっていった。本章でのレビューはこれを出発点とする。
 
+DigitalDesk
+-----------
 紙の文書とデジタル文書における作業の統合を目指したのがWellnerによる、「DigitalDesk」である。Wellnerは、紙とデジタルの文書が分離されている状況を「dual desk」として描写している。紙文書とデジタル文書は別の機能を持ち、媒体の違いから相互に変換することも難しい。この両者をうまく統合させる方法が「Computer Augmented Environments」だとWellnerは提唱する。
 
 Computer Augmented Environmentはバーチャルリアリティ(VR)に着想を得ているが、逆のアプローチを取っている。VRはコンピュータの作り出した世界に仮想的な物体を配置することができ、それは日常生活を支援するのに有用であるが、実際の世界から遮断されてしまう。これに対してComputer Augmented Environmentは実世界の物体をコンピュータによって拡張することを目指す。これによって物理的環境の慣れ親しんだ特徴を失わずに、コンピュータの支援を受けることができる。この考えはユビキタスコンピューティングと拡張現実感ともつながっている。
@@ -158,7 +159,7 @@ TUIの基本的な特徴には以下のようなものがある。
 
 システム自体ではなく、この記述からARToolKitが実世界を志向している、つまり「コンピュータを見えないものにし」「人間の能力を拡張する」ことを示す。まず、「カメラ」「ウインドウ」は後者では消えているため、コンピュータは確かになくなっている。また、前者ではただ表示しているだけだが、後者では仮想的な物体を見ることができるようになっているため、例えば有用な物体を表示することを考えれば人間の能力は拡張されていると言える。
 
-以上のように、コンピュータによる人間の能力の増強を考える際には、達成されたものがコンピュータの能力に属するか、もしくは人間かという帰属の問題が起こる。これに関しては、人間とコンピュータの境界の問題としてSuchmanが論じている( [Suchman_2006] )。
+以上のように、コンピュータによる人間の能力の増強を考える際には、達成されたものがコンピュータの能力に属するか、もしくは人間かという帰属の問題が起こる。これに関しては、人間とコンピュータの境界の問題としてSuchmanが論じている( [Suchman_2006]_ )。
 
 
 問題設定
@@ -275,8 +276,7 @@ Button「Studies of work and workplace in HCI」
 4.基礎的関係:Technomethodology
 
 反復型開発と日常的場面、実験
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+----------------------------
 
 
 イベントの開催による日常の観察
@@ -639,7 +639,7 @@ Experiment: Augmented Panorama Viewer
 .. [Randall2007] Randall, D., et al., 2007, "Fieldwork for Design", Springer
 .. [Button2009] Button, G., Sharrock, W., 2009, "Studies of Work and the Workplace in HCI", Morgan amd Claypool
 .. [Schegloff2007] Schegloff, E., A., 2007, "Sequence Organization in Interaction: A Primer in Conversation Analysis I", Cambridge University Press
-.. [Suchman2007] Suchman, L., 2006, "Human-Machine Configuration: Plan and Situated Action 2nd Edition", Cambridge University Press
+.. [Suchman_2006] Suchman, L., 2006, "Human-Machine Configuration: Plan and Situated Action 2nd Edition", Cambridge University Press
 .. [Siio2010] 椎尾一郎, 「ヒューマンコンピュータインタラクション入門」, サイエンス社, 2010
 .. [Rekimoto1996] 暦本純一, 「実世界志向インタフェースの研究動向」, コンピュータソフトウェア, Vol.13, No.3, pp.4–18
 .. [Ishii2008] Ishii, H., 2008, "Tangible User Interfaces", in "The Human-Computer Interaction Handbook Second Edition", Laurence Eribaum Associates, pp.470-487
