@@ -22,22 +22,40 @@ def parse_bullet_list(e):
 
 def parse_figure(e):
 	if e.firstChild.nodeName == 'image':
-		print """
-\\begin{figure}[!ht]
-\\centering 
-\\includegraphics[scale=.%s]{%s}
+		print """\\begin{minipage}[t]{.47\\textwidth}
+\\begin{center}
+\\includegraphics[width=\\textwidth]{%s}
 \\caption{%s}
-\\end{figure}
-"""%(e.firstChild.getAttribute('scale'), e.firstChild.getAttribute("uri"), e.childNodes[1].firstChild.data)
+\\end{center}
+\\end{minipage}"""%(e.firstChild.getAttribute("uri"), e.childNodes[1].firstChild.data)
+
+def parse_blockquote(e):
+	print "\\begin{figure}\n\\begin{verbatim}"
+	for line in e.childNodes[1:]:
+		print "   " + line.firstChild.data
+	print "\\end{verbatim}\n\\caption{%s}"%(e.firstChild.firstChild.data)
+	print "\\end{figure}"
 
 def parse_in_section(e):
+	after_figure = 0
 	for element in e.childNodes:
 		if element.nodeName == "paragraph":
 			parse_paragraph(element)
 		elif element.nodeName == "bullet_list":
 			parse_bullet_list(element)
 		elif element.nodeName == "figure":
-			parse_figure(element)
+			if after_figure == 0:
+				after_figure = 1
+				print "\\begin{figure}[htbp]\n\\begin{center}"
+				parse_figure(element)
+			else:
+				after_figure = 0
+				parse_figure(element)
+				print "\\end{center}\n\\end{figure}"
+		elif element.nodeName == "block_quote":
+			parse_blockquote(element)
+	if after_figure == 1:
+		print "\\end{center}\n\\end{figure}"
 
 def parse_section(dom):
 	elements = dom.getElementsByTagName("section")
@@ -57,7 +75,8 @@ def parse_citation(dom):
 	print "\\begin{thebibliography}{99}"
 	elements = dom.getElementsByTagName("citation")
 	for e in elements:
-		print "\\bibitem{%s} %s"%(e.childNodes[0].firstChild.data,e.childNodes[1].firstChild.data)
+		label = e.childNodes[0].firstChild.data.replace("_", " ")
+		print "\\bibitem[%s]{%s} %s"%(label, label, e.childNodes[1].firstChild.data)
 	print "\\end{thebibliography}"
 sys.setdefaultencoding('UTF-8')
 dom = parse(sys.argv[1])
