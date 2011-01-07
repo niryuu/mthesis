@@ -24,13 +24,13 @@ def parse_figure(e):
 	if e.firstChild.nodeName == 'image':
 		print """\\begin{minipage}[t]{.47\\textwidth}
 \\begin{center}
-\\includegraphics[width=\\textwidth]{%s}
+\\includegraphics[width=\\textwidth]{thumb/%s}
 \\caption{%s}
 \\end{center}
 \\end{minipage}"""%(e.firstChild.getAttribute("uri"), e.childNodes[1].firstChild.data)
 
 def parse_blockquote(e):
-	print "\\begin{figure}\n\\begin{verbatim}"
+	print "\\begin{figure}[!h]\n\\begin{verbatim}"
 	for line in e.childNodes[1:]:
 		print "   " + line.firstChild.data
 	print "\\end{verbatim}\n\\caption{%s}"%(e.firstChild.firstChild.data)
