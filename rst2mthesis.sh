@@ -5,3 +5,4 @@
 platex resume
 platex resume
 dvipdfmx resume
+pdftotext resume.pdf
