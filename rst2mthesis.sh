@@ -6,3 +6,5 @@ platex resume
 platex resume
 dvipdfmx resume
 pdftotext resume.pdf
+git commit -a -m 'modified'
+git push
